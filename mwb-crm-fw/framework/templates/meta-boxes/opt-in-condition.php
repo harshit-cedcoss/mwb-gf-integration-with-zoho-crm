@@ -15,7 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-echo '<pre>';echo '2'; print_r( $params ); echo '</pre>';
+// echo '<pre>';echo '2'; print_r( $params ); echo '</pre>';
 global $post;
 $form_id = get_post_meta( $post->ID, 'mwb_zgf_form', true );
 ?>

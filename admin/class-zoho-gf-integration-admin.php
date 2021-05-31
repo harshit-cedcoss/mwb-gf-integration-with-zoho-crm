@@ -248,28 +248,9 @@ class Zoho_Gf_Integration_Admin {
 			if ( ! empty( $feed_id ) ) {
 
 				$form_id = get_post_meta( $feed_id, 'mwb_zgf_form', true );
-				// $helper   = new Zoho_Gf_Helper();
-				// $response = ! empty( $form_id ) ? $helper->parse_form_fields( $form_id ) : array();
-
-				// $form_data = array();
-				// if ( ! empty( $response ) && is_array( $response ) ) {
-				// 	foreach ( $response as $key => $value ) {
-				// 		$form_data[ $key ] = $value['label'];
-				// 	}
-				// }
 
 				$form        = GFAPI::get_form( $form_id );
 				$form_fields = $form['fields'];
-
-				// $helper    = new Zoho_GF_Helper();
-				// $response  = $helper->parse_form_fields( $form_id );
-
-				// if ( ! empty( $form_fields ) && is_array( $form_fields ) ) {
-				// 	foreach ( $form_fields as $form_obj ) {
-				// 		$form_data[ $form_obj->id ] = $form_obj->label;
-
-				// 	}
-				// }
 
 				if ( ! empty( $form_fields ) && is_array( $form_fields ) ) {
 					foreach ( $form_fields as $form_obj ) {

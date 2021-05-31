@@ -22,10 +22,63 @@
  * @link       https://makewebbetter.com
  * @since      1.0.0
  *
- * @package    Zoho_Gf_Integration
+ * @package    MWB_GF_Integration_with_ZOHO_CRM
  */
 
 // If uninstall not called from WordPress, then exit.
 if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) {
 	exit;
+}
+
+// Get settings data.
+$settings = get_option( 'mwb_zgf_setting' );
+
+if ( ! empty( $settings ) && is_array( $settings ) ) {
+	if ( isset( $settings['data_delete'] ) && 'yes' == $settings['data_delete'] ) { // @codingStandardsIgnoreLine
+
+		// Delete all feeds.
+		$args = array(
+			'post_type'      => 'mwb_zoho_feeds',
+			'posts_per_page' => -1,
+		);
+
+		$all_feeds = get_posts( $args );
+
+		if ( ! empty( $all_feeds ) && is_array( $all_feeds ) ) {
+			foreach ( $all_feeds as $feed ) {
+				wp_delete_post( $feed->ID, true );
+			}
+		}
+		unregister_post_type( 'mwb_zoho_feeds' );
+
+		// Drop logs table.
+		global $wpdb;
+		$table_name = $wpdb->prefix . 'mwb_zgf_log';
+
+		$sql = "DROP TABLE IF EXISTS $table_name";
+		$wpdb->query( $sql ); // @codingStandardsIgnoreLine
+
+		// Delete options at last.
+		$options = array(
+			'mwb_zgf_setting',
+			'mwb-zgf-client-id',
+			'mwb-zgf-secret-id',
+			'mwb-zgf-domain',
+			'mwb_is_crm_active',
+			'mwb_zgf_modules',
+			'mwb-zgf-log-last-delete',
+			'mwb_zgf_log_table_created',
+			'mwb_zgf_zoho_token_data',
+			'mwb_zgf_synced_forms_count',
+		);
+
+		foreach ( $options as $option ) {
+			if ( get_option( $option ) ) {
+				delete_option( $option );
+			}
+		}
+
+		// unscedule cron.
+		wp_unschedule_event( time(), 'mwb_zgf_clear_log' );
+	}
 }

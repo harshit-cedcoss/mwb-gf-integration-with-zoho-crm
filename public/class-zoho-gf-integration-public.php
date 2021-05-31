@@ -118,19 +118,25 @@ class Zoho_Gf_Integration_Public {
 
 	}
 
+	/**
+	 * Get entry of the form after submission
+	 *
+	 * @param array $entry Entry fields array.
+	 * @param array $form  Form attributes array with field object.
+	 * @return void
+	 */
 	public function get_form_entries( $entry, $form ) {
 
-		$field_ids    = array();
 		$field_values = array();
 
 		foreach ( $form['fields'] as $field_obj ) {
-			if ( ! empty( $field_obj->inputs ) && is_array( $field_obj->inputs ) ) {
+			if ( ! empty( $field_obj->inputs ) && is_array( $field_obj->inputs ) && 'time' != $field_obj->type ) {   // @codingStandardsIgnoreLine
 				foreach ( $field_obj->inputs as $field_options ) {
-					$field_ids[]                          = $field_options['id'];
+
 					$field_values[ $field_options['id'] ] = $entry[ $field_options['id'] ];
 				}
 			} else {
-				$field_ids[]                    = $field_obj->id;
+
 				$field_values[ $field_obj->id ] = $entry[ $field_obj->id ];
 			}
 		}
@@ -144,12 +150,8 @@ class Zoho_Gf_Integration_Public {
 
 		$this->form_fields = $form['fields'];
 
-		// echo '<pre>';echo 'entry'; print_r( $entry ); echo '</pre>';
-		// echo '<pre>';echo 'form'; print_r( $form ); echo '</pre>';
-		// echo '<pre>';echo 'form data created'; print_r( $form_data ); echo '</pre>';
-
 		$this->send_to_crm( $form_data );
-		// die('check');
+
 	}
 
 
@@ -179,13 +181,9 @@ class Zoho_Gf_Integration_Public {
 					'zoho_object' => $crm_object,
 				);
 
-				// echo '<pre>';echo 'filter_exists'; print_r( $filter_exist ); echo '</pre>';
-				// echo '<pre>';echo 'datavalues'; print_r( $data['values'] ); echo '</pre>';
 				if ( ! empty( $filter_exist ) ) {
 
 					$filtered = $this->validate_filter( $filter_exist, $data['values'] );
-					// echo '<pre>';echo 'filtered'; print_r( $filtered ); echo '</pre>';
-					// die('working');
 
 					if ( $filtered ) { // If filter results true, then send data to crm.
 
@@ -210,8 +208,6 @@ class Zoho_Gf_Integration_Public {
 					}
 				}
 			}
-			// echo '<pre>'; print_r( $log_data ); echo '</pre>';
-			// echo '<pre>'; print_r( $filter_exist ); echo '</pre>';
 		}
 	}
 
@@ -226,11 +222,11 @@ class Zoho_Gf_Integration_Public {
 	public function validate_filter( $filters = array(), $data = array() ) {
 
 		if ( ! empty( $filters ) && is_array( $filters ) ) {
-			// echo '1';
+
 			foreach ( $filters as $or_key => $or_filters ) {
 				$result = true;
 				if ( is_array( $or_filters ) ) {
-					// echo $result;
+
 					foreach ( $or_filters as $and_key => $and_filter ) {
 						if ( '-1' == $and_filter['field'] || '-1' == $and_filter['option'] ) { // @codingStandardsIgnoreLine
 							return array( 'result' => false );
@@ -239,8 +235,7 @@ class Zoho_Gf_Integration_Public {
 						$feed_value = $and_filter['value'];
 						$entry_val  = $this->get_entry_values( $form_field, $data );
 						$result     = $this->is_value_allowed( $and_filter['option'], $feed_value, $entry_val );
-						// echo '<pre>'; print_r( $entry_value ); echo '</pre>';
-						// echo '<pre>';echo 'result : '; print_r(  $result ); echo '</pre>';
+
 						if ( false == $result ) { // @codingStandardsIgnoreLine
 							break;
 						}
@@ -252,9 +247,6 @@ class Zoho_Gf_Integration_Public {
 				}
 			}
 		}
-
-		// echo '<pre>';echo 'result='; print_r( $result ); echo '</pre>';
-		// die('filtered working');
 
 		return $result;
 	}
@@ -269,36 +261,25 @@ class Zoho_Gf_Integration_Public {
 	 */
 	public function get_entry_values( $field, $entries ) {
 
-		// echo '<pre>'; print_r( $field ); echo '</pre>';
-		// echo '<pre>'; print_r( $entries ); echo '</pre>';
-		// die('entry value check');
-
 		$value = false;
 
 		$form_fields = $this->form_fields;
 		$field_type  = isset( $form_fields[ $field ]['type'] ) ? $form_fields[ $field ]['type'] : '';
 
-		// if ( ! empty( $field ) || ! empty( $entries ) || is_array( $entries ) ) {
-
 		if ( ! empty( $field ) && ! empty( $entries ) && is_array( $entries ) ) {
 
 			if ( isset( $entries[ $field ] ) ) {
 				$value = $entries[ $field ];
-
-				// if ( is_array( $value ) && ! empty( $value['value'] ) ) {
-				// 	$value = $value['value'];
-				// } elseif ( ! is_array( $value ) ) {
-				// 	$value = maybe_unserialize( $value );
-				// }
 			}
 		}
 
-		// if ( ! empty( $value ) && 'file' == $field_type ) { // @codingStandardsIgnoreLine
-		// 	$value = false;
-		// } elseif ( is_array( $value ) && 1 == count( $value ) ) { // @codingStandardsIgnoreLine
-		// 	$value = implode( ' ', $value );
-		// }
-		// echo '<pre>'; print_r( $value ); echo '</pre>';
+		$discard_fields = array( 'fileupload', 'list' );
+
+		$discard_fields = apply_filters( 'mwb_zgf_discard_fields_to_zoho', $discard_fields, $field, $entries );
+
+		if ( ! empty( $value ) && in_array( $field_type, $discard_fields ) ) { // @codingStandardsIgnoreLine
+			$value = false;
+		}
 
 		return $value;
 	}
@@ -487,7 +468,6 @@ class Zoho_Gf_Integration_Public {
 					break;
 
 				case 'not_empty':
-					// echo 'not empty';
 					if ( ! empty( $form_value ) ) {
 						$result = true;
 					}

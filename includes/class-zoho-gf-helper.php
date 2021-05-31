@@ -95,18 +95,6 @@ class Zoho_GF_Helper {
 					$result = ! empty( $option['data_delete'] ) ? sanitize_text_field( wp_unslash( $option['data_delete'] ) ) : '';
 					break;
 
-				case 'restore_entry':
-					$result = ! empty( $option['restore_entry'] ) ? sanitize_text_field( wp_unslash( $option['restore_entry'] ) ) : '';
-					break;
-
-				case 'update_entry':
-					$result = ! empty( $option['update_entry'] ) ? sanitize_text_field( wp_unslash( $option['update_entry'] ) ) : '';
-					break;
-
-				case 'delete_entry':
-					$result = ! empty( $option['delete_entry'] ) ? sanitize_text_field( wp_unslash( $option['delete_entry'] ) ) : '';
-					break;
-
 				case 'notif':
 					$result = ! empty( $option['enable_notif'] ) ? sanitize_text_field( wp_unslash( $option['enable_notif'] ) ) : '';
 					break;
@@ -178,7 +166,7 @@ class Zoho_GF_Helper {
 		$default_settings = array(
 			'enable_logs'   => 'yes',
 			'data_delete'   => 'no',
-			// 'enable_sync'  => 'yes',
+			'enable_sync'   => 'yes',
 			'update_entry'  => 'no',
 			'delete_entry'  => 'no',
 			'restore_entry' => 'no',
@@ -214,67 +202,6 @@ class Zoho_GF_Helper {
 
 
 	/**
-	 * Get form fields
-	 *
-	 * @param int $form_id Form ID.
-	 * @return array An array of form fields.
-	 * @since 1.0.0
-	 */
-	public function parse_form_fields( $form_id ) {
-
-		$fields = array();
-		$id     = $form_id;
-
-		$form = GFAPI::get_form( $form_id );
-		// echo '<pre>'; print_r( $form ); echo '</pre>'; die('die');
-
-		$form_fields = $from['fields'];
-
-		// $form_input = get_post_meta( $id, '_form', true );
-
-		// if ( class_exists( 'WPCF7_ShortcodeManager' ) ) {
-		// 	$tag_manager = WPCF7_ShortcodeManager::get_instance();
-		// 	$tag_manager->do_shortcode( $form_input );
-		// 	$form_tags = $tag_manager->get_scanned_tags();
-
-		// } elseif ( class_exists( 'WPCF7_FormTagsManager' ) ) {
-		// 	$tag_manager = WPCF7_FormTagsManager::get_instance();
-		// 	$tag_manager->scan( $form_input );
-		// 	$form_tags = $tag_manager->get_scanned_tags();
-		// }
-
-		if ( ! empty( $form_fields ) && is_array( $form_fields ) ) {
-
-			// echo '<pre>'; print_r( $form_fields ); echo '</pre>';
-			foreach ( $form_fields as $field_obj ) {
-
-				// if ( is_object( $tag ) ) {
-				// 	$tag = (array) $tag;
-				// }
-
-				// if ( ! empty( $tag['name'] ) ) {
-
-				// 	$id           = str_replace( ' ', '', $tag['name'] );
-				// 	$tag['label'] = ucwords( str_replace( array( '-', '_' ), ' ', $tag['name'] ) );
-				// 	$tag['type_'] = $tag['type'];
-				// 	$tag['type']  = $tag['basetype'];
-				// 	$tag['req']   = false !== strpos( $tag['type'], '*' ) ? 'true' : '';
-
-				// 	if ( 'select' == $tag['type'] && ! empty( $tag['options'] ) && false !== array_search( 'multiple', $tag['options'] ) ) { // @codingStandardsIgnoreLine
-				// 		$tag['type'] = 'multiselect';
-				// 	}
-
-				// 	$fields[ $id ] = $tag;
-				// }
-
-				// $fields[ $field_obj->type ] = 
-			}
-		}
-
-		return $fields;
-	}
-
-	/**
 	 * Get form fields.
 	 *
 	 * @param array $data An array of form data.
@@ -284,21 +211,8 @@ class Zoho_GF_Helper {
 	public static function get_form_fields( $data = array() ) {
 
 		$form_data = array();
-		// if ( ! empty( $data ) && is_array( $data ) ) {
-		// 	foreach ( $data as $key => $value ) {
-		// 		$form_data[ $key ] = $value['label'];
-
-		// 	}
-		// }
 
 		$form_fields = $data['fields'];
-
-		// if ( ! empty( $form_fields ) && is_array( $form_fields ) ) {
-		// 	foreach ( $form_fields as $form_obj ) {
-		// 		$form_data[ $form_obj->id ] = $form_obj->label;
-
-		// 	}
-		// }
 
 		if ( ! empty( $form_fields ) && is_array( $form_fields ) ) {
 			foreach ( $form_fields as $form_obj ) {

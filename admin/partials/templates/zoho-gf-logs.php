@@ -24,8 +24,8 @@ $enable_log = Zoho_Gf_Helper::get_settings_details( 'logs' );
 		<div class="mwb-zgf__logo-zoho">
 			<img src="<?php echo esc_url( ZOHO_GF_INTEGRATION_URL . 'admin/images/zoho-logo.png' ); ?>" alt="<?php esc_html_e( 'Zoho', 'mwb-gf-integration-with-zoho-crm' ); ?>">
 		</div>
-		<div class="mwb-zgf__logo-contact">
-			<img src="<?php echo esc_url( ZOHO_GF_INTEGRATION_URL . 'admin/images/contact-form.svg' ); ?>" alt="<?php esc_html_e( 'Zoho', 'mwb-gf-integration-with-zoho-crm' ); ?>">
+		<div class="mwb-zgf__logo-gravity">
+			<img src="<?php echo esc_url( ZOHO_GF_INTEGRATION_URL . 'admin/images/gravity-form.svg' ); ?>" alt="<?php esc_html_e( 'Gravity Form', 'mwb-gf-integration-with-zoho-crm' ); ?>">
 		</div>
 		<?php if ( $enable_log ) : ?>
 			<?php if ( $response ) : ?>

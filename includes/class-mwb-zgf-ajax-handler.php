@@ -1,6 +1,6 @@
 <?php
 /**
- * The complete management for the Zoho-CF7 plugin through out the site.
+ * The complete management for the Zoho-GF plugin through out the site.
  *
  * @since      1.0.0
  * @package    MWB_GF_Integration_with_ZOHO_CRM
@@ -46,10 +46,12 @@ class Mwb_Zgf_Ajax_Handler {
 
 		if ( ! empty( $event ) ) {
 			if ( $data = $this->$event( $_POST ) ) { // @codingStandardsIgnoreLine
+
 				$response['status']  = true;
 				$response['message'] = esc_html__( 'Success', 'mwb-gf-integration-with-zoho-crm' );
-
+				echo '<pre>';echo 'data'; print_r( $data ); echo '</pre>';
 				$response = $this->maybe_add_data( $response, $data );
+				echo '<pre>';echo 'response->data'; print_r( $response['data'] ); echo '</pre>';
 			}
 		}
 
@@ -174,6 +176,17 @@ class Mwb_Zgf_Ajax_Handler {
 		return $module_data;
 	}
 
+	public function filter_feed_list( $data = array() ) {
+
+		$form_id = ! empty( $data['form_id'] ) ? sanitize_text_field( wp_unslash( $data['form_id'] ) ) : '';
+
+		$form       = GFAPI::get_form( $form_id );
+		$form_title = $form['title'];
+		update_option( 'mwb_zgf_filter_feed_acc_to_form', $form_id );
+
+		return array( 'title' => $form_title, 'id' => $form_id );
+	}
+
 	/**
 	 * Fetch form fields.
 	 *
@@ -188,10 +201,6 @@ class Mwb_Zgf_Ajax_Handler {
 
 		$form        = GFAPI::get_form( $form_id );
 		$form_fields = $form['fields'];
-
-		// echo '<pre>'; print_r( $form_fields ); echo '</pre>'; die('mojo');
-		// $helper    = new Zoho_GF_Helper();
-		// $response  = $helper->parse_form_fields( $form_id );
 
 		if ( ! empty( $form_fields ) && is_array( $form_fields ) ) {
 			foreach ( $form_fields as $form_obj ) {

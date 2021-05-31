@@ -21,7 +21,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 		<?php esc_html_e( 'Map Fields', 'mwb-gf-integration-with-zoho-crm' ); ?>
 	</a>
 	<?php
-		$desc = esc_html__( 'Map your contact form fields with appropriate Zoho fields.', 'mwb-gf-integration-with-zoho-crm' );
+		$desc = esc_html__( 'Map your gravity form fields with appropriate Zoho fields.', 'mwb-gf-integration-with-zoho-crm' );
 		Zoho_Gf_Integration_Admin::mwb_zgf_tooltip( $desc );
 	?>
 	<div id="mwb-fields-form-section" class="mwb-feeds__meta-box-main-wrapper" mapping_data="<?php echo esc_attr( htmlspecialchars( wp_json_encode( $params['mapping_data'] ) ) ); ?> " crm_object="<?php echo esc_attr( $params['object'] ); ?>">

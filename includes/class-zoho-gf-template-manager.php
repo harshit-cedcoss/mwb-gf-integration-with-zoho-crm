@@ -126,7 +126,6 @@ class Zoho_GF_Template_Manager {
 					'feeds'    => esc_html__( 'Zoho Feeds', 'mwb-gf-integration-with-zoho-crm' ),
 					'logs'     => esc_html__( 'Zoho Logs', 'mwb-gf-integration-with-zoho-crm' ),
 					'settings' => esc_html__( 'Settings', 'mwb-gf-integration-with-zoho-crm' ),
-					// 'premium'  => esc_html__( 'Go Premium', 'mwb-gf-integration-with-zoho-crm' ),
 				);
 				break;
 		}

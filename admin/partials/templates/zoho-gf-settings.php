@@ -25,7 +25,7 @@ if ( isset( $_POST['mwb_zgf_submit_setting'] ) ) {
 }
 
 $option = get_option( 'mwb_zgf_setting', Zoho_Gf_Helper::mwb_zgf_default_settings() );
-	echo '<pre>'; print_r( $option ); echo '</pre>';
+	// echo '<pre>'; print_r( $option ); echo '</pre>';
 ?>
 
 <div class="mwb_zgf__account-wrap">
@@ -34,8 +34,8 @@ $option = get_option( 'mwb_zgf_setting', Zoho_Gf_Helper::mwb_zgf_default_setting
 		<div class="mwb_zgf__logo-zoho">
 			<img src="<?php echo esc_url( ZOHO_GF_INTEGRATION_URL . 'admin/images/zoho-logo.png' ); ?>" alt="<?php esc_html_e( 'Zoho', 'mwb-gf-integration-with-zoho-crm' ); ?>">
 		</div>
-		<div class="mwb_zgf__logo-contact">
-			<img src="<?php echo esc_url( ZOHO_GF_INTEGRATION_URL . 'admin/images/contact-form.svg' ); ?>" alt="<?php esc_html_e( 'Zoho', 'mwb-gf-integration-with-zoho-crm' ); ?>">
+		<div class="mwb_zgf__logo-gravity">
+			<img src="<?php echo esc_url( ZOHO_GF_INTEGRATION_URL . 'admin/images/gravity-form.svg' ); ?>" alt="<?php esc_html_e( 'Gravity Form', 'mwb-gf-integration-with-zoho-crm' ); ?>">
 		</div>
 	</div>
 
@@ -97,60 +97,6 @@ $option = get_option( 'mwb_zgf_setting', Zoho_Gf_Helper::mwb_zgf_default_setting
 						</td>
 					</tr>
 					<!-- data delete end -->
-
-					<!-- Restore Entry start -->
-					<tr>
-						<th>
-							<label><?php esc_html_e( 'Restore Entry', 'mwb-gf-integration-with-zoho-crm' ); ?></label>
-						</th>
-
-						<td>
-							<?php
-							$desc = esc_html__( 'Send Entry data to ZOHO CRM if entry is restored in Gravity Forms', 'mwb-gf-integration-with-zoho-crm' );
-							echo esc_html( Zoho_Gf_Integration_Admin::mwb_zgf_tooltip( $desc ) );
-
-							$restore_entry = ! empty( $option['restore_entry'] ) ? sanitize_text_field( wp_unslash( $option['restore_entry'] ) ) : 'no';
-							?>
-							<input type="checkbox" name="mwb_setting[restore_entry]" value="yes"  <?php checked( 'yes', $restore_entry ); ?>>
-						</td>
-					</tr>
-					<!-- Restore Entry end -->
-
-					<!-- Update Entry start -->
-					<tr>
-						<th>
-							<label><?php esc_html_e( 'Update Entry to ZOHO', 'mwb-gf-integration-with-zoho-crm' ); ?></label>
-						</th>
-
-						<td>
-							<?php
-							$desc = esc_html__( 'Update Entry data to ZOHO CRM when updated in the Gravity Forms', 'mwb-gf-integration-with-zoho-crm' );
-							echo esc_html( Zoho_Gf_Integration_Admin::mwb_zgf_tooltip( $desc ) );
-
-							$update_entry = ! empty( $option['update_entry'] ) ? sanitize_text_field( wp_unslash( $option['update_entry'] ) ) : 'no';
-							?>
-							<input type="checkbox" name="mwb_setting[update_entry]" value="yes"  <?php checked( 'yes', $update_entry ); ?>>
-						</td>
-					</tr>
-					<!-- Update Entry end -->
-
-					<!-- Delete entry start -->
-					<tr>
-						<th>
-							<label><?php esc_html_e( 'Delete Entry from ZOHO', 'mwb-gf-integration-with-zoho-crm' ); ?></label>
-						</th>
-
-						<td>
-							<?php
-							$desc = esc_html__( 'Delete Entry data from the ZOHO CRM when deleted from the Gravity Forms', 'mwb-gf-integration-with-zoho-crm' );
-							echo esc_html( Zoho_Gf_Integration_Admin::mwb_zgf_tooltip( $desc ) );
-
-							$delete_entry = ! empty( $option['delete_entry'] ) ? sanitize_text_field( wp_unslash( $option['delete_entry'] ) ) : 'no';
-							?>
-							<input type="checkbox" name="mwb_setting[delete_entry]" value="yes"  <?php checked( 'yes', $delete_entry ); ?>>
-						</td>
-					</tr>
-					<!-- Delete Entry end -->
 
 					<!-- Enable email notif start -->
 					<tr>

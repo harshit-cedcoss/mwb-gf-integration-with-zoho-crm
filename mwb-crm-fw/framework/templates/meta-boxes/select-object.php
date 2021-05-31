@@ -19,10 +19,10 @@ $object  = $modules->get_modules();
 ?>
 <div class="mwb-feeds__content  mwb-content-wrap">
 	<a class="mwb-feeds__header-link active">
-		<?php esc_html_e( 'Select Object', 'zoho-cf7-integration' ); ?>
+		<?php esc_html_e( 'Select Object', 'mwb-gf-integration-with-zoho-crm' ); ?>
 	</a>
 	<?php
-		$desc = esc_html__( 'Select the zoho object to create on form submission', 'zoho-cf7-integration' );
+		$desc = esc_html__( 'Select the zoho object to create on form submission', 'mwb-gf-integration-with-zoho-crm' );
 
 		Zoho_Gf_Integration_Admin::mwb_zgf_tooltip( $desc );
 	?>
@@ -30,7 +30,7 @@ $object  = $modules->get_modules();
 		<div class="mwb-feeds__meta-box-wrap">
 			<div class="mwb-form-wrapper">
 				<select name="crm_object" id="mwb-feeds-zoho-object" class="mwb-form__dropdown">
-					<option value="-1"><?php esc_html_e( 'Select Object', 'zoho-cf7-integration' ); ?></option>
+					<option value="-1"><?php esc_html_e( 'Select Object', 'mwb-gf-integration-with-zoho-crm' ); ?></option>
 					<?php if ( false != $object && is_array( $object ) ) : // @codingStandardsIgnoreLine?>
 						<?php foreach ( $object as $key => $value ) : ?>
 							<option value="<?php echo esc_html( $key ); ?>" <?php selected( $params['object'], $key ); ?>><?php echo esc_html( $value ); ?></option>

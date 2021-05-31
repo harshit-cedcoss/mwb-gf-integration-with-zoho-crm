@@ -15,9 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-// $forms = Zoho_Cf7_Helper::get_contact_forms();
 $forms = GFAPI::get_forms();
-// echo '<pre>'; print_r( $forms ); echo '</pre>'; die('lklkl');
 
 ?>
 <div class="mwb-feeds__content  mwb-content-wrap">

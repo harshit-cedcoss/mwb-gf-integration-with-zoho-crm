@@ -145,9 +145,9 @@ if ( true === $zoho_gf_is_plugin_active['status'] ) {
 		if ( strpos( $file, basename( __FILE__ ) ) !== false ) {
 
 			$row_meta = array(
-				'demo'    => '<a href="#" target="_blank"><img src="' . ZOHO_GF_INTEGRATION_URL . 'admin/images/Demo.svg" style="width: 20px;padding-right: 5px;"></i>' . esc_html__( 'Demo', 'zoho-cf7-integration' ) . '</a>',
-				'doc'     => '<a href="#" target="_blank"><img src="' . ZOHO_GF_INTEGRATION_URL . 'admin/images/Documentation.svg" style="width: 20px;padding-right: 5px;"></i>' . esc_html__( 'Documentation', 'zoho-cf7-integration' ) . '</a>',
-				'support' => '<a href="#" target="_blank"><img src="' . ZOHO_GF_INTEGRATION_URL . 'admin/images/Support.svg" style="width: 20px;padding-right: 5px;"></i>' . esc_html__( 'Support', 'zoho-cf7-integration' ) . '</a>',
+				'demo'    => '<a href="#" target="_blank"><img src="' . ZOHO_GF_INTEGRATION_URL . 'admin/images/Demo.svg" style="width: 20px;padding-right: 5px;"></i>' . esc_html__( 'Demo', 'mwb-gf-integration-with-zoho-crm' ) . '</a>',
+				'doc'     => '<a href="#" target="_blank"><img src="' . ZOHO_GF_INTEGRATION_URL . 'admin/images/Documentation.svg" style="width: 20px;padding-right: 5px;"></i>' . esc_html__( 'Documentation', 'mwb-gf-integration-with-zoho-crm' ) . '</a>',
+				'support' => '<a href="#" target="_blank"><img src="' . ZOHO_GF_INTEGRATION_URL . 'admin/images/Support.svg" style="width: 20px;padding-right: 5px;"></i>' . esc_html__( 'Support', 'mwb-gf-integration-with-zoho-crm' ) . '</a>',
 			);
 
 			return array_merge( $links, $row_meta );

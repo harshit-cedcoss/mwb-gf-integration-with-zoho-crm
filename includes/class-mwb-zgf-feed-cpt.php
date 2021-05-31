@@ -106,7 +106,7 @@ class Mwb_Zgf_Feed_Cpt {
 		$param['mapping_data']  = $this->fetch_feed_data( $post->ID, 'mwb_zgf_mapping_data', array() );
 		$param['primary_field'] = $this->fetch_feed_data( $post->ID, 'mwb_zgf_primary_field', array() );
 
-		echo '<pre>'; print_r( $param ); echo '</pre>';
+		// echo '<pre>'; print_r( $param ); echo '</pre>';
 
 		$this->render_mb_data( 'header' );
 		$this->render_mb_data( 'select-form', $param );
@@ -129,7 +129,7 @@ class Mwb_Zgf_Feed_Cpt {
 
 		$param = $this->fetch_feed_data( $post->ID, 'mwb_zgf_condtion_field', array() );
 
-		echo '<pre>';echo '1'; print_r( $param ); echo '</pre>';
+		// echo '<pre>';echo '1'; print_r( $param ); echo '</pre>';
 		$this->render_mb_data( 'opt-in-condition', $param );
 	}
 

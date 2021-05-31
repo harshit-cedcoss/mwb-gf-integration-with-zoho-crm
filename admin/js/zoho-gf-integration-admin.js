@@ -785,6 +785,22 @@ jQuery( 'document' ).ready( function() {
 		} );
 	}
 
+	const filterFeedList = () => {
+		let filter_form_id = jQuery( '.mwb-zgf__from_search-wrap #mwb-zgf__from_search' );
+		let event = 'filter_feed_list';
+		let input = {
+			action  : action,
+			nonce   : auth,
+			event   : event,
+			form_id : filter_form_id,
+		}
+
+		let result = doAjax( input );
+		result.then( ( response ) => {
+
+		});
+	}
+
 
 
 	/**==================================================
@@ -950,6 +966,28 @@ jQuery( 'document' ).ready( function() {
         	jQuery( 'div#titlewrap' ).append( msg );
         }
 	} );
+
+
+	/**Filter Feeds List based on the form */
+	jQuery( '.mwb-zgf__from_search-wrap' ).on( 'ready change load', '#mwb-zgf__from_search', function(){
+		// alert('working');
+		var form_id = jQuery( this ).val();
+		alert(form_id);
+
+		let event = 'filter_feed_list';
+		let input = {
+			action  : action,
+			nonce   : auth,
+			event   : event,
+			form_id : form_id,
+		}
+
+		let result = doAjax( input );
+		result.then( ( response ) => {
+			location.reload();
+		} );
+	} );
+
 
 	/* On form select change */
 	jQuery( '#mwb_zgf_select_form' ).on( 'ready change', function() {

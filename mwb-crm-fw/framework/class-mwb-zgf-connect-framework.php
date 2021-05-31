@@ -194,10 +194,6 @@ class Mwb_Zgf_Connect_Framework {
 			return false;
 		}
 
-// 		echo '<pre>';echo 'feed_id'; print_r( $feed_id ); echo '</pre>';
-// 		echo '<pre>';echo 'feed'; print_r( $feed ); echo '</pre>';
-// echo '<pre>';echo 'entries'; print_r( $entries ); echo '</pre>';
-// die('get request check');
 		// Process Feeds.
 		$response = array();
 

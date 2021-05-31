@@ -22,7 +22,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 		<div class="mwb-zgf__logo-zoho">
 			<img src="<?php echo esc_url( ZOHO_GF_INTEGRATION_URL . 'admin/images/zoho-logo.png' ); ?>" alt="<?php esc_html_e( 'Zoho', 'zoho-gf-integration' ); ?>">
 		</div>
-		<div class="mwb-zgf__logo-contact">
-			<img src="<?php echo esc_url( ZOHO_GF_INTEGRATION_URL . 'admin/images/contact-form.svg' ); ?>" alt="<?php esc_html_e( 'Zoho', 'zoho-gf-integration' ); ?>">
+		<div class="mwb-zgf__logo-gravity">
+			<img src="<?php echo esc_url( ZOHO_GF_INTEGRATION_URL . 'admin/images/gravity-form.svg' ); ?>" alt="<?php esc_html_e( 'Gravity Form', 'zoho-gf-integration' ); ?>">
 		</div>
 	</div>
