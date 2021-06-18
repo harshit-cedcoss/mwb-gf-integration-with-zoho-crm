@@ -52,6 +52,29 @@ class MWB_Zgf_Api_Base {
 	}
 
 	/**
+	 * Put Request.
+	 *
+	 * @param string $endpoint Api endpoint of mautic.
+	 * @param array  $data Data to be used in request.
+	 * @param array  $headers header to be used in request.
+	 */
+	public function put( $endpoint, $data = array(), $headers = array() ) {
+		return $this->request( 'PUT', $endpoint, $data, $headers );
+	}
+
+	/**
+	 * Delete Request.
+	 *
+	 * @param string $endpoint Api endpoint of mautic.
+	 * @param array  $data Data to be used in request.
+	 * @param array  $headers header to be used in request.
+	 */
+	public function delete( $endpoint, $data = array(), $headers = array() ) {
+		return $this->request( 'DELETE', $endpoint, $data, $headers );
+	}
+
+
+	/**
 	 * Send api request
 	 *
 	 * @param string $method   HTTP method.
@@ -89,6 +112,7 @@ class MWB_Zgf_Api_Base {
 		return $data;
 	}
 
+
 	/**
 	 * Parse crm response.
 	 *
@@ -97,7 +121,7 @@ class MWB_Zgf_Api_Base {
 	 * @throws Exception Throws exception on error.
 	 * @return array
 	 */
-	private function parse_response( $response ) {
+	protected function parse_response( $response ) {
 
 		if ( $response instanceof WP_Error ) {
 			throw new Exception( 'Error', 0 );

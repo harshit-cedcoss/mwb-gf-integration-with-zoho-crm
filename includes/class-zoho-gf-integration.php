@@ -8,8 +8,8 @@
  * @link       https://makewebbetter.com
  * @since      1.0.0
  *
- * @package    MWB_GF_Integration_with_ZOHO_CRM
- * @subpackage MWB_GF_Integration_with_ZOHO_CRM/includes
+ * @package    MWB_GF_Integration_with_Zoho_CRM
+ * @subpackage MWB_GF_Integration_with_Zoho_CRM/includes
  */
 
 /**
@@ -22,8 +22,8 @@
  * version of the plugin.
  *
  * @since      1.0.0
- * @package    MWB_GF_Integration_with_ZOHO_CRM
- * @subpackage MWB_GF_Integration_with_ZOHO_CRM/includes
+ * @package    MWB_GF_Integration_with_Zoho_CRM
+ * @subpackage MWB_GF_Integration_with_Zoho_CRM/includes
  * @author     MakeWebBetter <https://makewebbetter.com>
  */
 class Zoho_Gf_Integration {
@@ -71,7 +71,7 @@ class Zoho_Gf_Integration {
 		} else {
 			$this->version = '1.0.0';
 		}
-		$this->plugin_name = 'zoho-gf-integration';
+		$this->plugin_name = 'mwb-gf-integration-with-zoho-crm';
 
 		$this->load_dependencies();
 		$this->set_locale();
@@ -202,6 +202,8 @@ class Zoho_Gf_Integration {
 
 		$this->loader->add_action( 'mwb_zgf_save', $plugin_admin, 'save_crm_settings', 10, 2 );
 
+		// Clear log callback.
+		$this->loader->add_action( 'mwb_zgf_clear_log', $plugin_admin, 'clear_sync_log' );
 	}
 
 	/**
@@ -232,6 +234,7 @@ class Zoho_Gf_Integration {
 
 		$this->loader->add_action( 'mwb_zgf_header_start', $plugin_template_manager, 'render_header_content_start' );
 		$this->loader->add_action( 'mwb_zgf_nav_tab', $plugin_template_manager, 'render_navigation_tab' );
+		$this->loader->add_action( 'mwb_zgf_output_screen', $plugin_template_manager, 'render_settings_screen' );
 		$this->loader->add_action( 'mwb_zgf_header_end', $plugin_template_manager, 'render_header_content_end' );
 	}
 

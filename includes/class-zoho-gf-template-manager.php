@@ -3,8 +3,8 @@
  * The core plugin templates are handled here.
  *
  * @since      1.0.0
- * @package    MWB_GF_Integration_with_ZOHO_CRM
- * @subpackage MWB_GF_Integration_with_ZOHO_CRM/includes
+ * @package    MWB_GF_Integration_with_Zoho_CRM
+ * @subpackage MWB_GF_Integration_with_Zoho_CRM/includes
  * @author     MakeWebBetter <https://makewebbetter.com>
  */
 
@@ -102,8 +102,32 @@ class Zoho_GF_Template_Manager {
 		echo ob_get_clean(); // @codingStandardsIgnoreLine
 		/* Tabs section end */
 
-		require_once ZOHO_GF_INTEGRATION_DIRPATH . '/admin/partials/templates/zoho-gf-' . $active_tab . '.php';
+		$path = apply_filters( 'mwb_zgf_add_tab_template_path', ZOHO_GF_INTEGRATION_DIRPATH . '/admin/partials/templates/zoho-gf-' . $active_tab . '.php', $active_tab );
 
+		require_once $path;
+
+	}
+
+	/**
+	 * Selected Tab settings Screen.
+	 * Returns :: HTML
+	 *
+	 * @since 1.0.0
+	 * @return void
+	 */
+	public function render_settings_screen() {
+
+		/* Page settings section start */
+		?>
+		<div class="mwb-zgf-container">
+			<div class="mwb-zgf-row">
+				<div class="mwb-zgf-desc">
+					<form method="post" action="#" class="mwb-zgf-output-form"></form>
+				</div>
+			</div>
+		</div>
+		<?php
+		/* Page setting section end */
 	}
 
 	/**

@@ -6,8 +6,8 @@
  * @link       https://makewebbetter.com
  * @since      1.0.0
  *
- * @package    Zoho_Gf_Integration
- * @subpackage Zoho_Gf_Integration/admin
+ * @package    MWB_GF_Integration_with_Zoho_CRM
+ * @subpackage MWB_GF_Integration_with_Zoho_CRM/admin
  */
 
 /**
@@ -16,8 +16,8 @@
  * Defines the plugin name, version, and two examples hooks for how to
  * enqueue the admin-specific stylesheet and JavaScript.
  *
- * @package    Zoho_Gf_Integration
- * @subpackage Zoho_Gf_Integration/admin
+ * @package    MWB_GF_Integration_with_Zoho_CRM
+ * @subpackage MWB_GF_Integration_with_Zoho_CRM/admin
  * @author     MakeWebBetter <https://makewebbetter.com>
  */
 class Zoho_Gf_Integration_Admin {
@@ -356,8 +356,6 @@ class Zoho_Gf_Integration_Admin {
 		if ( empty( $and_index ) || empty( $and_condition ) || empty( $or_index ) ) {
 			return;
 		}
-
-		// echo '<pre>';echo '3'; print_r( $and_condition ); echo '</pre>';
 
 		?>
 		<div class="and-condition-filter" data-and-index=<?php echo esc_attr( $and_index ); ?> >

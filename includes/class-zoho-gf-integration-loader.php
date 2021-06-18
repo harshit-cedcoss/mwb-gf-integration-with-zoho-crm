@@ -5,8 +5,8 @@
  * @link       https://makewebbetter.com
  * @since      1.0.0
  *
- * @package    MWB_GF_Integration_with_ZOHO_CRM
- * @subpackage MWB_GF_Integration_with_ZOHO_CRM/includes
+ * @package    MWB_GF_Integration_with_Zoho_CRM
+ * @subpackage MWB_GF_Integration_with_Zoho_CRM/includes
  */
 
 /**
@@ -16,8 +16,8 @@
  * the plugin, and register them with the WordPress API. Call the
  * run function to execute the list of actions and filters.
  *
- * @package    MWB_GF_Integration_with_ZOHO_CRM
- * @subpackage MWB_GF_Integration_with_ZOHO_CRM/includes
+ * @package    MWB_GF_Integration_with_Zoho_CRM
+ * @subpackage MWB_GF_Integration_with_Zoho_CRM/includes
  * @author     MakeWebBetter <https://makewebbetter.com>
  */
 class Zoho_Gf_Integration_Loader {

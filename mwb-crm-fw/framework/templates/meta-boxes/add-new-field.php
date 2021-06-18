@@ -7,8 +7,8 @@
  * @link       https://makewebbetter.com
  * @since      1.0.0
  *
- * @package    MWB_GF_Integration_with_ZOHO_CRM
- * @subpackage MWB_GF_Integration_with_ZOHO_CRM/includes/framework/templates/
+ * @package    MWB_GF_Integration_with_Zoho_CRM
+ * @subpackage MWB_GF_Integration_with_Zoho_CRM/includes/framework/templates/
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -16,16 +16,18 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 ?>
-<div id="mwb-add-new-field-section-wrapper"  class="mwb-feeds__content  mwb-content-wrap row-hide">
-	<a class="mwb-feeds__header-link active">
-		<?php esc_html_e( 'Add New Field', 'mwb-gf-integration-with-zoho-crm' ); ?>
-	</a>
-	<div class="mwb-feeds__meta-box-main-wrapper">
+<div id="mwb-add-new-field-section-wrapper"  class="mwb-feeds__content  mwb-content-wrap mwb-zgf__form--group row-hide">
+	<div class="mwb-zgf__form--label">
+		<a class="mwb-feeds__header-link active">
+			<?php esc_html_e( 'Add New Field', 'mwb-gf-integration-with-zoho-crm' ); ?>
+		</a>
+	</div>	
+	<div class="mwb-feeds__meta-box-main-wrapper mwb-zgf__form--field">
 		<div class="mwb-feeds__meta-box-wrap">
 			<div class="mwb-form-wrapper">
 				<select id="add-new-field-select"></select>
-				<a id="add-new-field-btn" class="button"><?php esc_html_e( 'Add Field', 'mwb-gf-integration-with-zoho-crm' ); ?></a>
 			</div>
 		</div>
+		<a id="add-new-field-btn" class="mwb-btn"><?php esc_html_e( 'Add Field', 'mwb-gf-integration-with-zoho-crm' ); ?></a>
 	</div>
 </div>

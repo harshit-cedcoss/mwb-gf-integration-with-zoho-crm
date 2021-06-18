@@ -3,8 +3,8 @@
  * The complete management for the Zoho-GF feeds custom post type.
  *
  * @since      1.0.0
- * @package    MWB_GF_Integration_with_ZOHO_CRM
- * @subpackage MWB_GF_Integration_with_ZOHO_CRM/includes
+ * @package    MWB_GF_Integration_with_Zoho_CRM
+ * @subpackage MWB_GF_Integration_with_Zoho_CRM/includes
  * @author     MakeWebBetter <https://makewebbetter.com>
  */
 
@@ -12,8 +12,8 @@
  * The complete management for the Zoho-GF feeds custom post type.
  *
  * @since      1.0.0
- * @package    MWB_GF_Integration_with_ZOHO_CRM
- * @subpackage MWB_GF_Integration_with_ZOHO_CRM/includes
+ * @package    MWB_GF_Integration_with_Zoho_CRM
+ * @subpackage MWB_GF_Integration_with_Zoho_CRM/includes
  * @author     MakeWebBetter <https://makewebbetter.com>
  */
 class Mwb_Zgf_Feed_Cpt {
@@ -90,6 +90,8 @@ class Mwb_Zgf_Feed_Cpt {
 	public function mwb_zgf_meta_box() {
 		add_meta_box( 'mwb_zgf_feeds_meta_box', esc_html__( 'Feed details', 'mwb-gf-integration-with-zoho-crm' ), array( $this, 'zgf_feeds_mb_render' ), 'mwb_zoho_feeds' );
 		add_meta_box( 'mwb_zgf_feeds_condition_meta_box', esc_html__( 'Conditional Statements', 'mwb-gf-integration-with-zoho-crm' ), array( $this, 'zgf_feeds_cond_render' ), 'mwb_zoho_feeds' );
+
+		do_action( 'mwb_zoho_add_metabox_to_feeds' );
 	}
 
 	/**
@@ -106,8 +108,6 @@ class Mwb_Zgf_Feed_Cpt {
 		$param['mapping_data']  = $this->fetch_feed_data( $post->ID, 'mwb_zgf_mapping_data', array() );
 		$param['primary_field'] = $this->fetch_feed_data( $post->ID, 'mwb_zgf_primary_field', array() );
 
-		// echo '<pre>'; print_r( $param ); echo '</pre>';
-
 		$this->render_mb_data( 'header' );
 		$this->render_mb_data( 'select-form', $param );
 		$this->render_mb_data( 'select-object', $param );
@@ -117,6 +117,7 @@ class Mwb_Zgf_Feed_Cpt {
 		$this->render_mb_data( 'nonce-field', $param );
 		$this->render_mb_data( 'footer' );
 	}
+
 
 	/**
 	 * Callback :: Post type feeds conditional filter metabox.
@@ -129,9 +130,10 @@ class Mwb_Zgf_Feed_Cpt {
 
 		$param = $this->fetch_feed_data( $post->ID, 'mwb_zgf_condtion_field', array() );
 
-		// echo '<pre>';echo '1'; print_r( $param ); echo '</pre>';
 		$this->render_mb_data( 'opt-in-condition', $param );
+
 	}
+
 
 	/**
 	 * Render html and data.
@@ -181,8 +183,6 @@ class Mwb_Zgf_Feed_Cpt {
 		}
 		if ( isset( $_POST['post_type'] ) && 'mwb_zoho_feeds' == $_POST['post_type'] ) { // @codingStandardsIgnoreLine
 
-			// echo '<pre>';echo 'save1'; print_r( $POST ); echo '</pre>';
-
 			$crm_form         = isset( $_POST['crm_form'] ) ? sanitize_text_field( wp_unslash( $_POST['crm_form'] ) ) : '';
 			$crm_object       = isset( $_POST['crm_object'] ) ? sanitize_text_field( wp_unslash( $_POST['crm_object'] ) ) : '';
 			$crm_field_arr    = isset( $_POST['crm_field'] ) ? map_deep( wp_unslash( $_POST['crm_field'] ), 'sanitize_text_field' ) : array();
@@ -205,13 +205,13 @@ class Mwb_Zgf_Feed_Cpt {
 				}
 			}
 
-			// echo '<pre>';echo 'save2'; print_r( $mapping_data ); echo '</pre>'; die('bjj');
-
 			update_post_meta( $post_id, 'mwb_zgf_form', $crm_form );
 			update_post_meta( $post_id, 'mwb_zgf_object', $crm_object );
 			update_post_meta( $post_id, 'mwb_zgf_mapping_data', $mapping_data );
 			update_post_meta( $post_id, 'mwb_zgf_primary_field', $primary_field );
 			update_post_meta( $post_id, 'mwb_zgf_condtion_field', $condition );
+
+			do_action( 'mwb_zgf_save_feed_post_data', $post_id, $_POST );
 
 		}
 	}

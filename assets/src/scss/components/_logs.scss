@@ -1,0 +1,140 @@
+.mwb-logs__settings-list {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-left: auto !important;
+
+    @include media(mwb-tablet) {
+        margin-left: unset !important;
+        margin-top: 20px !important;
+    }
+}
+
+.mwb-logs__settings-list-item {
+    a {
+        @extend %secondary-button;
+        padding: 5px 22px;
+
+        &:hover {
+            background: $c-black;
+            border: 1px solid $c-black;
+            color: $c-white;
+        }
+    }
+}
+
+.mwb-zgf__logs-table-wrap {
+    .dataTables_scrollBody {
+        border-bottom: none !important;
+    }
+    .dashicons-plus-alt {
+        color: $c-tufts-blue;
+        cursor: pointer;
+        transition: all 0.3s linear;
+    }
+
+    .parent {
+        .dtr-control {
+            .dashicons-plus-alt {
+                transform: rotate(45deg);
+                color: #ff0000;
+            } 
+        } 
+    }
+
+    .mwb-zoho__logs-table {
+        border-bottom: 1px solid $c-gainsboro !important;
+        margin-bottom: 20px;
+
+        th {
+            border-bottom: 0 !important;
+            padding: 8px 10px  !important;
+            text-align: left;
+        }
+
+        thead {
+            border-bottom: 1px solid $c-gainsboro;
+        }
+
+        .dtr-details {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: flex-start;
+
+            li {
+                border: 1px solid $c-gainsboro;
+                flex: 0 0 100%;
+                margin-bottom: 20px;
+                max-width: 50%;
+
+                @include media(mwb-tablet) {
+                    max-width: 100%;
+                }
+
+                &:nth-child(odd) {
+                    margin-right: 20px;
+                    max-width:  calc(50% - 20px);
+
+                    @include media(mwb-tablet) {
+                        max-width: 100%;
+                        margin-right: unset;
+                    }
+                }
+                
+                .dtr-title {
+                    background: #f1f1f1;
+                    display: block;
+                    font-weight: 700;
+                    min-width: 95px;
+                    padding: 15px;
+                }
+
+                .dtr-data {
+                    display: inline-block;
+                    padding: 15px;
+                    white-space: break-spaces;
+                    word-break: break-word;
+                }
+            }
+        }
+    }
+
+    .bottom {
+       @extend %mwb-row;
+       justify-content: flex-end;
+
+       @include media(mwb-tablet) {
+           justify-content: center;
+       }
+
+       .dataTables_paginate {
+           padding-top: 0;
+           margin: 0 8px;
+           
+           @include media(mwb-tablet) {
+               margin-top: 10px;
+           }
+       }
+       .paginate_button {
+           background: $c-white !important;
+           padding: 4px 8px !important;
+       }
+    }
+
+    .dataTables_wrapper {
+        .dataTables_paginate,
+        .dataTables_info {
+            float: unset;
+        }           
+    } 
+
+    #mwb-zgf-table_length {
+        float: unset !important;
+
+        select {
+            padding: 4px 15px !important;
+            width: 100px !important;
+        }
+    }
+}
+

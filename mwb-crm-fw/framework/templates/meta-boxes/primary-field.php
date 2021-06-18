@@ -7,8 +7,8 @@
  * @link       https://makewebbetter.com
  * @since      1.0.0
  *
- * @package    MWB_GF_Integration_with_ZOHO_CRM
- * @subpackage MWB_GF_Integration_with_ZOHO_CRM/includes/framework/templates/
+ * @package    MWB_GF_Integration_with_Zoho_CRM
+ * @subpackage MWB_GF_Integration_with_Zoho_CRM/includes/framework/templates/
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -27,9 +27,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 	?>
 	<div class="mwb-feeds__meta-box-main-wrapper">
 		<div class="mwb-feeds__meta-box-wrap">
-			<div class="mwb-form-wrapper">
-				<label for="primary_field"><?php esc_html_e( 'Select Primary Field', 'mwb-gf-integration-with-zoho-crm' ); ?></label>
-				<select id="primary-field-select" name="primary_field" primary_field="<?php echo esc_attr( $params['primary_field'] ); ?>" ></select>
+			<div class="mwb-form-wrapper mwb-zgf__form--group">
+				<div class="mwb-zgf__form--label">
+					<label for="primary_field"><?php esc_html_e( 'Select Primary Field', 'mwb-gf-integration-with-zoho-crm' ); ?></label>
+				</div>
+				<div class="mwb-zgf__form--field">
+					<select id="primary-field-select" name="primary_field" primary_field="<?php echo esc_attr( $params['primary_field'] ); ?>" ></select>
+				</div>
 				<p class="mwb-description">
 					<?php
 						esc_html_e( 'Please select a field which should be used as "primary key" to update an existing record.', 'mwb-gf-integration-with-zoho-crm' );

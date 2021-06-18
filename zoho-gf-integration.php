@@ -9,10 +9,10 @@
  *
  * @link              https://makewebbetter.com
  * @since             1.0.0
- * @package           MWB_GF_Integration_with_ZOHO_CRM
+ * @package           MWB_GF_Integration_with_Zoho_CRM
  *
  * @wordpress-plugin
- * Plugin Name:       MWB GF Integration with ZOHO CRM
+ * Plugin Name:       MWB GF Integration with Zoho CRM
  * Plugin URI:        https://makewebbetter.com
  * Description:       This is a short description of what the plugin does. It's displayed in the WordPress admin area.
  * Version:           1.0.0
@@ -89,7 +89,7 @@ if ( true === $zoho_gf_is_plugin_active['status'] ) {
 
 	define( 'ZOHO_GF_INTEGRATION_DIRPATH', plugin_dir_path( __FILE__ ) ); // Plugin filesystem directory path.
 
-	define( 'ZOHO_GF_INTEGRATION_DIRPATH_ADMIN', plugin_dir_path( __FILE__ ) . 'admin/partials/' ); // Plugin filesystem path to admin.
+	// define( 'ZOHO_GF_INTEGRATION_DIRPATH_ADMIN', plugin_dir_path( __FILE__ ) . 'admin/partials/' ); // Plugin filesystem path to admin.
 
 	/**
 	 * The code that runs during plugin activation.

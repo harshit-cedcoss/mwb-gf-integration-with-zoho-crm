@@ -3,8 +3,8 @@
  * The complete management for the Zoho-GF plugin through out the site.
  *
  * @since      1.0.0
- * @package    MWB_GF_Integration_with_ZOHO_CRM
- * @subpackage MWB_GF_Integration_with_ZOHO_CRM/includes
+ * @package    MWB_GF_Integration_with_Zoho_CRM
+ * @subpackage MWB_GF_Integration_with_Zoho_CRM/includes
  * @author     MakeWebBetter <https://makewebbetter.com>
  */
 
@@ -12,8 +12,8 @@
  * The complete management for the ajax handlers.
  *
  * @since      1.0.0
- * @package    MWB_GF_Integration_with_ZOHO_CRM
- * @subpackage MWB_GF_Integration_with_ZOHO_CRM/includes
+ * @package    MWB_GF_Integration_with_Zoho_CRM
+ * @subpackage MWB_GF_Integration_with_Zoho_CRM/includes
  * @author     MakeWebBetter <https://makewebbetter.com>
  */
 class Mwb_Zgf_Ajax_Handler {
@@ -49,9 +49,8 @@ class Mwb_Zgf_Ajax_Handler {
 
 				$response['status']  = true;
 				$response['message'] = esc_html__( 'Success', 'mwb-gf-integration-with-zoho-crm' );
-				echo '<pre>';echo 'data'; print_r( $data ); echo '</pre>';
+
 				$response = $this->maybe_add_data( $response, $data );
-				echo '<pre>';echo 'response->data'; print_r( $response['data'] ); echo '</pre>';
 			}
 		}
 
@@ -176,6 +175,12 @@ class Mwb_Zgf_Ajax_Handler {
 		return $module_data;
 	}
 
+	/**
+	 * Filter Feed List.
+	 *
+	 * @param array $data array of data.
+	 * @return array
+	 */
 	public function filter_feed_list( $data = array() ) {
 
 		$form_id = ! empty( $data['form_id'] ) ? sanitize_text_field( wp_unslash( $data['form_id'] ) ) : '';

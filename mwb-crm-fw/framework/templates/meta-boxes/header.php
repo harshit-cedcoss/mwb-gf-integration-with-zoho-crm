@@ -7,14 +7,13 @@
  * @link       https://makewebbetter.com
  * @since      1.0.0
  *
- * @package    MWB_GF_Integration_with_ZOHO_CRM
- * @subpackage MWB_GF_Integration_with_ZOHO_CRM/includes/framework/templates/
+ * @package    MWB_GF_Integration_with_Zoho_CRM
+ * @subpackage MWB_GF_Integration_with_Zoho_CRM/includes/framework/templates/
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
-// echo '<pre>'; print_r( get_current_screen() ); echo '</pre>';
 ?>
 
 <div class="mwb_zgf__feeds-wrap">
@@ -23,6 +22,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 			<img src="<?php echo esc_url( ZOHO_GF_INTEGRATION_URL . 'admin/images/zoho-logo.png' ); ?>" alt="<?php esc_html_e( 'Zoho', 'zoho-gf-integration' ); ?>">
 		</div>
 		<div class="mwb-zgf__logo-gravity">
-			<img src="<?php echo esc_url( ZOHO_GF_INTEGRATION_URL . 'admin/images/gravity-form.svg' ); ?>" alt="<?php esc_html_e( 'Gravity Form', 'zoho-gf-integration' ); ?>">
+			<img src="<?php echo esc_url( ZOHO_GF_INTEGRATION_URL . 'admin/images/gravity-form.png' ); ?>" alt="<?php esc_html_e( 'Gravity Form', 'zoho-gf-integration' ); ?>">
 		</div>
 	</div>

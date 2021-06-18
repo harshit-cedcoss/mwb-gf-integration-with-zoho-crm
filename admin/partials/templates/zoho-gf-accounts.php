@@ -7,8 +7,8 @@
  * @link       https://makewebbetter.com
  * @since      1.0.0
  *
- * @package    MWB_GF_Integration_with_ZOHO_CRM
- * @subpackage MWB_GF_Integration_with_ZOHO_CRM/admin/partials/templates
+ * @package    MWB_GF_Integration_with_Zoho_CRM
+ * @subpackage MWB_GF_Integration_with_Zoho_CRM/admin/partials/templates
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -31,7 +31,7 @@ $total_count = Zoho_Gf_Helper::get_synced_forms_count();
 			<img src="<?php echo esc_url( ZOHO_GF_INTEGRATION_URL . 'admin/images/zoho-logo.png' ); ?>" alt="<?php esc_html_e( 'Zoho', 'mwb-gf-integration-with-zoho-crm' ); ?>">
 		</div>
 		<div class="mwb-zgf__logo-gravity">
-			<img src="<?php echo esc_url( ZOHO_GF_INTEGRATION_URL . 'admin/images/gravity-form.svg' ); ?>" alt="<?php esc_html_e( 'Gravity Form', 'mwb-gf-integration-with-zoho-crm' ); ?>">
+			<img src="<?php echo esc_url( ZOHO_GF_INTEGRATION_URL . 'admin/images/gravity-form.png' ); ?>" alt="<?php esc_html_e( 'Gravity Form', 'mwb-gf-integration-with-zoho-crm' ); ?>">
 		</div>
 	</div>
 
@@ -39,7 +39,7 @@ $total_count = Zoho_Gf_Helper::get_synced_forms_count();
 		<ul>
 			<li class="mwb-zgf__conn-row">
 				<div class="mwb-zgf__left-col">
-					<h3><?php echo esc_html_e( 'Connection Authorized', 'mwb-gf-integration-with-zoho-crm' ); ?></h3>
+					<h3 class="mwb-title"><?php echo esc_html_e( 'Connection Authorized', 'mwb-gf-integration-with-zoho-crm' ); ?></h3>
 					<div class="mwb-zgf-token-notice__wrap">
 						<p id="mwb-zgf-token-notice" >
 							<?php if ( ! $token ) : ?>
@@ -131,11 +131,11 @@ $total_count = Zoho_Gf_Helper::get_synced_forms_count();
 						&rarr;<?php esc_html_e( 'Choose client type as "Server based"', 'mwb-gf-integration-with-zoho-crm' ); ?></br>
 						&rarr;<?php echo sprintf( '%s (%s)', esc_html__( 'Enter client name', 'mwb-gf-integration-with-zoho-crm' ), esc_html__( 'For eg. Demo app or My app', 'mwb-gf-integration-with-zoho-crm' ) ); ?></br>
 						&rarr;<?php esc_html_e( 'Enter ', 'mwb-gf-integration-with-zoho-crm' ); ?><code><?php echo esc_url( admin_url() ); ?></code><?php esc_html_e( 'as redirect URI', 'mwb-gf-integration-with-zoho-crm' ); ?></br>
-						&rarr;<?php esc_html_e( 'Save app', 'mwb-gf-integration-with-zoho-crm' ); ?>
+						&rarr;<?php esc_html_e( 'Create app', 'mwb-gf-integration-with-zoho-crm' ); ?>
 					</p>
 				</div>
 			</div>
-			<table class="mwb_zgf_table <?php echo esc_attr( '1' == $is_active ? 'is_hidden' : '' ); // @codingStandardsIgnoreLine ?>">
+			<table class="mwb_zgf_table mwb-zgf__unauthorized--table <?php echo esc_attr( '1' == $is_active ? 'is_hidden' : '' ); // @codingStandardsIgnoreLine ?>">
 				<tbody>
 
 					<!-- Zoho Domain start -->
@@ -177,7 +177,7 @@ $total_count = Zoho_Gf_Helper::get_synced_forms_count();
 							?>
 							<div class="mwb-zgf__secure-field">
 								<input type="password"  name="mwb_account[app_id]" id="mwb-zgf-client-id" value="<?php echo esc_html( $app_id ); ?>" required>
-								<div class="mwb-gf__trailing-icon">
+								<div class="mwb-zgf__trailing-icon">
 									<span class="dashicons dashicons-visibility mwb-toggle-view"></span>
 								</div>
 							</div>

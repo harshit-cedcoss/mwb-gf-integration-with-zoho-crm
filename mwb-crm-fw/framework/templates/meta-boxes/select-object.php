@@ -7,8 +7,8 @@
  * @link       https://makewebbetter.com
  * @since      1.0.0
  *
- * @package    MWB_GF_Integration_with_ZOHO_CRM
- * @subpackage MWB_GF_Integration_with_ZOHO_CRM/includes/framework/templates/
+ * @package    MWB_GF_Integration_with_Zoho_CRM
+ * @subpackage MWB_GF_Integration_with_Zoho_CRM/includes/framework/templates/
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -17,16 +17,18 @@ if ( ! defined( 'ABSPATH' ) ) {
 $modules = new Zoho_Gf_Helper();
 $object  = $modules->get_modules();
 ?>
-<div class="mwb-feeds__content  mwb-content-wrap">
-	<a class="mwb-feeds__header-link active">
-		<?php esc_html_e( 'Select Object', 'mwb-gf-integration-with-zoho-crm' ); ?>
-	</a>
-	<?php
-		$desc = esc_html__( 'Select the zoho object to create on form submission', 'mwb-gf-integration-with-zoho-crm' );
+<div class="mwb-feeds__content  mwb-content-wrap mwb-zgf__form--group">
+	<div class="mwb-zgf__form--label">
+		<a class="mwb-feeds__header-link active">
+			<?php esc_html_e( 'Select Object', 'mwb-gf-integration-with-zoho-crm' ); ?>
+		</a>
+		<?php
+			$desc = esc_html__( 'Select the zoho object to create on form submission', 'mwb-gf-integration-with-zoho-crm' );
 
-		Zoho_Gf_Integration_Admin::mwb_zgf_tooltip( $desc );
-	?>
-	<div class="mwb-feeds__meta-box-main-wrapper">
+			Zoho_Gf_Integration_Admin::mwb_zgf_tooltip( $desc );
+		?>
+	</div>
+	<div class="mwb-feeds__meta-box-main-wrapper mwb-zgf__form--field">
 		<div class="mwb-feeds__meta-box-wrap">
 			<div class="mwb-form-wrapper">
 				<select name="crm_object" id="mwb-feeds-zoho-object" class="mwb-form__dropdown">
@@ -39,8 +41,8 @@ $object  = $modules->get_modules();
 				</select>
 			</div>
 			<div class="mwb-form-wrapper">
-				<a class="button refresh-object"><?php esc_html_e( 'Refresh Objects', 'mwb-woo-crm-fw' ); ?></a>
-				<a class="button refresh-fields"><?php esc_html_e( 'Refresh Fields', 'mwb-woo-crm-fw' ); ?></a>
+				<a class="mwb-btn  refresh-object"><?php esc_html_e( 'Refresh Objects', 'mwb-woo-crm-fw' ); ?></a>
+				<a class="mwb-btn  refresh-fields"><?php esc_html_e( 'Refresh Fields', 'mwb-woo-crm-fw' ); ?></a>
 			</div>
 		</div>
 	</div>

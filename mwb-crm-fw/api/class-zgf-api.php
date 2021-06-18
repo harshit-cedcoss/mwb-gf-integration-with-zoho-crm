@@ -96,7 +96,7 @@ class Zgf_Api extends MWB_Zgf_Api_Base {
 	 * @since 1.0.0
 	 * @return void
 	 */
-	private static function initialize( $token_data = array() ) {
+	protected static function initialize( $token_data = array() ) {
 
 		if ( empty( $token_data ) ) {
 			$token_data = get_option( 'mwb_zgf_zoho_token_data', array() );
@@ -337,6 +337,7 @@ class Zgf_Api extends MWB_Zgf_Api_Base {
 		return $data;
 	}
 
+
 	/**
 	 * Get records data
 	 *
@@ -400,6 +401,7 @@ class Zgf_Api extends MWB_Zgf_Api_Base {
 			$this->renew_access_token();
 		}
 		$response = $this->create_or_update_record( $module, $record_data, $is_bulk, $log_data );
+
 		if ( $this->is_success( $response ) ) {
 			$data = $response['data'];
 		} else {
@@ -424,13 +426,15 @@ class Zgf_Api extends MWB_Zgf_Api_Base {
 		$this->base_url = $this->get_api_domain();
 		$endpoint       = '/crm/v2/' . $module . '/upsert';
 
+		$record_data = apply_filters( 'mwb_zgf_alter_record_data', $record_data );
+
 		if ( true == $is_bulk ) { // @codingStandardsIgnoreLine
 			$request['data'] = $record_data;
 		} else {
 			$request['data'] = array( $record_data );
 		}
 		$request['duplicate_check_fields'] = array();
-		$request['duplicate_check_fields'] = get_post_meta( $feed_id, 'primary_field' );
+		$request['duplicate_check_fields'] = get_post_meta( $feed_id, 'mwb_zgf_primary_field' );
 
 		$request_data = wp_json_encode( $request );
 		$headers      = $this->get_auth_header();
@@ -449,7 +453,7 @@ class Zgf_Api extends MWB_Zgf_Api_Base {
 	 * @since 1.0.0
 	 * @return integer
 	 */
-	private function get_object_id_from_response( $response ) {
+	protected function get_object_id_from_response( $response ) {
 		$id = '-';
 		if ( isset( $response['data'] ) && isset( $response['data']['data'] ) ) {
 			$data = $response['data']['data'];
@@ -470,7 +474,7 @@ class Zgf_Api extends MWB_Zgf_Api_Base {
 	 * @param array  $log_data    Data to log.
 	 * @return void
 	 */
-	private function log_request_in_db( $event, $zoho_object, $request, $response, $log_data ) {
+	protected function log_request_in_db( $event, $zoho_object, $request, $response, $log_data ) {
 		$zoho_id = $this->get_object_id_from_response( $response );
 
 		$request  = serialize( $request ); // @codingStandardsIgnoreLine
@@ -514,7 +518,7 @@ class Zgf_Api extends MWB_Zgf_Api_Base {
 	 * @param array  $response Response data.
 	 * @since 1.0.0
 	 */
-	private function log_request( $event, $endpoint, $request, $response ) {
+	protected function log_request( $event, $endpoint, $request, $response ) {
 		$url = $this->base_url . $endpoint;
 
 		$path = Zoho_GF_Helper::create_log_folder( 'zoho-gf-logs' );
@@ -623,7 +627,7 @@ class Zgf_Api extends MWB_Zgf_Api_Base {
 	 * @since 1.0.0
 	 * @return bool
 	 */
-	private function is_success( $response ) {
+	protected function is_success( $response ) {
 		if ( isset( $response['code'] ) ) {
 			return in_array( $response['code'], array( 200, 201, 204, 202 ) ); // @codingStandardsIgnoreLine
 		}

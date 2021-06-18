@@ -1,0 +1,433 @@
+@import "color",
+"typography",
+"placeholder";
+
+/*==================================
+  =          GLOBAL CSS            =
+====================================*/
+
+* {
+    box-sizing: border-box;
+}
+
+
+body.forms_page_mwb_zoho_gf {
+    .mwb-zgf-main {
+        color: $c-dark;
+        font-family: 'NunitoSans-Regular';
+        font-size: $fs-normal;
+        line-height: 24px;
+        margin: 0;
+        padding: 0;
+    } 
+}
+
+body.forms_page_mwb_zoho_gf {
+    .mwb-zgf-main {
+        h1,h2,h3,h4,h5 {
+            margin: 0;
+        }
+    }
+}
+
+body.forms_page_mwb_zoho_gf {
+    .mwb-zgf-main {
+        a {
+            text-decoration: none;
+
+            &:hover,
+            &:active,
+            &:focus {
+                box-shadow: none;
+                color: none;
+                outline: none;
+                text-decoration: none;
+            }
+        }
+    }
+}
+
+body.forms_page_mwb_zoho_gf {
+    .mwb-zgf-main {
+        ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+    }
+}
+
+
+body.forms_page_mwb_zoho_gf {
+    .mwb-zgf-main {
+        p {
+            font-size: $fs-normal;
+            margin: 0;
+        }
+    
+        img {
+            display: block;
+            height: auto;
+            max-width: 100%;
+        }
+    }
+}
+
+body.post-type-mwb_zoho_feeds {
+    img {
+        display: block;
+        height: auto;
+        max-width: 100%;
+    }
+}
+
+.mwb-title {
+    @extend %title;
+}
+
+.mwb-btn {
+    @extend %cta;
+}
+
+.mwb-zgf__instruction-icon {
+    @extend %mwb-zcf7__icon-wrap;
+
+    .mwb-zgf__instruction-open-icon {
+        @extend %mwb-zcf7__icon-insert;
+    }
+
+    .mwb-zgf__instruction-close-icon {
+        @extend %mwb-zcf7__icon-remove;
+    }
+}
+
+.icon-rotation {
+    @extend %icon-rotation;
+}
+
+/*===================================
+  =          GLOBAL CSS END         =
+====================================*/
+
+.mwb-zgf-header {
+    background: $c-white;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    margin: 30px 10px 10px 0;
+    padding: 25px 20px;
+
+    .mwb-zgf-header__title {
+        color: $c-tufts-blue;
+        font-family: ff-nunitosans-bold;
+        font-size: $fs-medium;
+    }
+
+    .mwb-wfw-version {
+        color: $c-tufts-blue;
+        font-family: ff-nunitosans-bold;
+        font-size: $fs-small;
+    }
+}
+
+/*===================================
+  =         NAVBAR CSS START        =
+====================================*/
+
+.mwb-zgf-navbar {
+    background: $c-white;
+    border-radius: 8px 8px 0 0;
+    margin: 0 10px 0 0px;
+    padding: 20px;
+
+    .mwb-zgf-nav-tabs {
+        align-items: center;
+        border-bottom: 1px solid $c-silver;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+    }
+
+    .mwb-zgf-nav-item {
+        margin: 10px 0;
+        position: relative;
+    }
+
+    .mwb-zgf-nav-link {
+        background: transparent;
+        border: none;
+        color: $c-dark;
+        display: inline-block;
+        float: none;
+        font-size: $fs-small;
+        margin: 0;
+        padding: 0 25px 15px 0;
+        transition: all 0.3s linear;
+        
+        &.nav-tab-active {
+            &::after {
+                background: $c-tufts-blue;
+                border-radius: 2px;
+                bottom: -12px;
+                content: '';
+                height: 4px;
+                left: 0;
+                position: absolute;
+                right: 25px;
+            }
+        }
+
+        &:hover {
+            color: $c-tufts-blue;
+        }
+    }
+}
+
+/*===================================
+  =         NAVBAR CSS END          =
+====================================*/
+
+/*===================================
+  =         FORM CSS START          =
+====================================*/
+body.forms_page_mwb_zoho_gf {
+    .mwb-zgf-main {
+        label {
+            font-weight: 400;
+            font-size: $fs-normal;
+            line-height: 24px;
+            letter-spacing: 0.25px;
+        }
+    }
+}
+
+body.post-type-mwb_zoho_feeds {
+    label {
+        font-weight: 400;
+        font-size: $fs-normal;
+        line-height: 24px;
+        letter-spacing: 0.25px;
+        color: $c-dark;
+    }
+}
+
+.mwb-feeds__header-link {
+    color: $c-dark;
+    font-weight: 400;
+    font-size: $fs-normal;
+    line-height: 24px;
+    letter-spacing: 0.25px; 
+    
+    &:hover {
+        color: $c-dark;
+    }
+}
+
+.mwb-zgf__form--group {
+   @extend %mwb-row;
+    margin-bottom: 20px;
+}
+
+.mwb-zgf__form--label {
+    flex: 0 0 100%;
+    max-width: 25%;
+    
+    @include media(mwb-tablet) {
+        max-width: 100%;
+        margin-bottom: 10px;
+    }
+}
+
+.mwb-zgf__form--field {
+    flex: 0 0 100%;
+    max-width: 75%;
+
+    @include media(mwb-tablet) {
+        max-width: 100%;
+    }
+}
+
+body.forms_page_mwb_zoho_gf {
+    .mwb-zgf-main {
+        input[type="text"],
+        input[type="password"],
+        input[type="email"],
+        input[type="url"],
+        input[type="number"],
+        textarea,
+        select {
+           border-color: #8E908F !important;
+           max-width: 300px;
+           padding: 10px 15px !important;
+           width: 100%;
+       }
+    }
+}
+
+body.post-type-mwb_zoho_feeds {
+    input[type="text"],
+    input[type="password"],
+    input[type="email"],
+    input[type="url"],
+    input[type="number"],
+    textarea,
+    select {
+        border-color: #8E908F !important;
+        max-width: 300px;
+        padding: 10px 15px !important;
+        width: 100%;
+    }
+}
+
+body.forms_page_mwb_zoho_gf {
+    .mwb-zgf-main {
+        input[type="text"],
+        input[type="password"],
+        input[type="url"],
+        input[type="email"],
+        input[type="checkbox"],
+        input[type="number"],
+        textarea,
+        select {
+            &:focus {
+                border-color: $c-tufts-blue !important;
+                box-shadow: 0 0 1px $c-tufts-blue !important;
+                color: $c-dark;
+            }
+        }
+    }
+}
+
+body.post-type-mwb_zoho_feeds {
+    input[type="text"],
+    input[type="password"],
+    input[type="email"],
+    input[type="url"],
+    input[type="number"],
+    textarea,
+    select {
+        &:focus {
+            border-color: $c-tufts-blue !important;
+            box-shadow: 0 0 1px $c-tufts-blue !important;
+            color: $c-dark;
+        }
+    }
+}
+
+body.forms_page_mwb_zoho_gf {
+    .mwb-zgf-main {
+        input[type="submit"] {
+            &:focus {
+                border: none;
+                outline: none;
+            }
+        }
+    }
+}
+
+body.post-type-mwb_zoho_feeds {
+   input[type="submit"] {
+            &:focus {
+                border: none;
+                outline: none;
+        }
+    }
+}
+
+
+.mwb-switch {
+    background: $c-platinum;
+    border-radius: 32px;
+    cursor: pointer;
+    display:inline-block;
+    height: 14px;
+    position: relative;
+    width: 34px;
+}
+
+.mwb-switch__bg {
+    background: $c-columbia-blue;
+}
+
+.mwb-switch-checkbox--move {
+    background: $c-tufts-blue !important;
+    border: 1px solid $c-tufts-blue !important;
+    transform: translateX(88%);
+}
+
+body.forms_page_mwb_zoho_gf {
+    .mwb-zgf-main {
+        input[type=checkbox] {
+            &:checked::before {
+                content: none;
+            }
+        }
+    }
+}
+
+body.forms_page_mwb_zoho_gf {
+    .mwb-zgf-main {
+        input[type=checkbox] {
+            background: $c-gainsboro;
+            border-radius: 50%;
+            border: 1px solid $c-gainsboro;
+            box-shadow: 0 3px 1px -2px rgba(0, 0 ,0, 0.4), 0 2px 2px 0px rgba(0, 0, 0,0.3), 0 1px 5px 0 rgba(0, 0, 0,0.2);
+            box-sizing: border-box;
+            height: 20px;
+            left: -1px;
+            position: absolute;
+            top: 0;
+            transition: all 0.1s linear;
+            width: 20px;
+            z-index: 1;
+        }
+    }
+}
+
+body.forms_page_mwb_zoho_gf {
+    .mwb-zgf-main {
+        input[type=checkbox] {
+           &:focus {
+            border: none;
+            box-shadow: 0 3px 1px -2px rgba(0, 0 ,0, 0.4), 0 2px 2px 0px rgba(0, 0, 0,0.6), 0 1px 5px 0 rgba(0, 0, 0,0.2) !important;
+            outline: none;
+           }
+        }
+    }
+}
+
+.mwb-switch__checkbox--move {
+    background: $c-tufts-blue !important;
+    border: 1px solid $c-tufts-blue !important;
+    transform: translateX(88%);
+}
+
+/*===================================
+  =         FORM CSS END          =
+====================================*/
+
+.mwb_zgf__account-wrap,
+.mwb-zgf__feedlist-wrap,
+.mwb-zgf__logs-wrap {
+    background: $c-white;
+    border-radius: 0 0 8px 8px;
+    margin: 0 10px 0 0;
+    padding: 20px;
+}
+
+.mwb-zgf__logo-wrap {
+    @extend %mwb-row;
+    margin-bottom: 20px;
+    position: relative;
+
+    .mwb-zgf__logo-zoho {
+        width: 150px;
+        margin-right: 10px;
+    }
+
+    .mwb-zgf__logo-gravity {
+        width: 60px;
+        margin-right: 10px;
+    }
+
+}

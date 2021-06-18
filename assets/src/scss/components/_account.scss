@@ -1,0 +1,125 @@
+/*==================================
+ =       AUTHORIZED PAGE CSS       =
+ ===================================*/  
+.mwb_zgf__account-wrap {
+    .is_hidden {
+        display: none;
+    }
+}
+
+.mwb-zgf__conn-row {
+    @extend %mwb-row;
+    border-radius: 8px;
+    box-shadow: -4px -4px 16px rgba(63, 71, 86,0.1), 4px 4px 16px rgba(63, 71, 86,0.1);
+    margin-bottom: 20px;
+    padding: 20px 15px;
+}
+
+.mwb-zgf__left-col {
+    flex: 0 0 100%;
+    max-width: 70%;
+    @include media(mwb-tablet) {
+        max-width: 100%;
+    }
+}
+
+.mwb-zgf-token-notice__wrap {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+
+    p:first-child {
+        margin-right: 20px !important   ;
+    }
+
+    img {
+       cursor: pointer;
+       height: 20px;
+       width: 20px;
+    }
+}
+
+.mwb-zgf__right-col {
+    flex: 0 0 100%;
+    max-width: 30%;
+    text-align: right;
+
+    @include media(mwb-tablet) {
+        max-width: 100%;
+        text-align: left;
+    }
+}
+
+.mwb-section__heading {
+    @extend %title;
+}
+
+.mwb-dashboard__about-number {
+    font-size: $fs-xx-large;
+    line-height: 1.5;
+    color: $c-tufts-blue;
+}
+
+.mwb-about__list-item,
+.mwb-dashboard__about-list {
+    align-items: center;
+    border-radius: 8px;
+    box-shadow: -4px -4px 16px rgba(63, 71, 86,0.1), 4px 4px 16px rgba(63, 71, 86,0.1);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    padding: 20px 15px;
+}
+
+
+/*==================================
+ =     UNAUTHORIZED PAGE CSS       =
+ ===================================*/  
+
+ .mwb-zgf__signup-instruction-wrap {
+    border-radius: 8px;
+    box-shadow: 4px 4px 8px rgba(63,71,86 ,0.1);
+    margin: 10px -15px;
+    padding: 10px 15px;
+    position: relative;
+}
+
+.mwb-zgf__instruction {
+    display: none;
+}
+
+.mwb-zgf__unauthorized--table {
+    margin: 30px 0;
+    width: 100%;
+
+    tr {
+        @extend %mwb-row;
+        margin-bottom: 20px;
+    }
+
+    th {
+        flex: 0 0 100%;
+        max-width: 25%;
+        text-align: left;
+    }
+
+    td {
+        flex: 0 0 100%;
+        max-width: 75%;
+    }
+
+    .mwb-zgf__secure-field {
+        display: inline-block;
+        max-width: 300px;
+        position: relative;
+        width: 100%;
+    }
+
+    .mwb-zgf__trailing-icon {
+        position: absolute;
+        right: 5px;
+        top: 15px;
+    }
+}
+  

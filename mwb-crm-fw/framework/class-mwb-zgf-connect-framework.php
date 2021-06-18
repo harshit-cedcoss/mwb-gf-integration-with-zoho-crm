@@ -3,8 +3,8 @@
  * The complete management for the Zoho-gf Connect Framework.
  *
  * @since      1.0.0
- * @package    MWB_GF_Integration_with_ZOHO_CRM
- * @subpackage MWB_GF_Integration_with_ZOHO_CRM/includes
+ * @package    MWB_GF_Integration_with_Zoho_CRM
+ * @subpackage MWB_GF_Integration_with_Zoho_CRM/includes
  * @author     MakeWebBetter <https://makewebbetter.com>
  */
 
@@ -12,8 +12,8 @@
  * The complete management for the Zoho-GF Connect Framework.
  *
  * @since      1.0.0
- * @package    MWB_GF_Integration_with_ZOHO_CRM
- * @subpackage MWB_GF_Integration_with_ZOHO_CRM/includes
+ * @package    MWB_GF_Integration_with_Zoho_CRM
+ * @subpackage MWB_GF_Integration_with_Zoho_CRM/includes
  * @author     MakeWebBetter <https://makewebbetter.com>
  */
 class Mwb_Zgf_Connect_Framework {
@@ -107,48 +107,6 @@ class Mwb_Zgf_Connect_Framework {
 		}
 	}
 
-	/**
-	 * Get other associated zoho object in required format.
-	 *
-	 * @param string $woo_obj_type   The WP post type.
-	 * @param string $lookup_feed_id The Feed id to get lookup request.
-	 * @param string $lookup_type    The CRM Object required id.
-	 * @param string $woo_id         The WP post id.
-	 * @since  1.0.0
-	 * @return array - Current Woo meta keys with Labels to Woo keys.
-	 */
-	public function resolve_lookup( $woo_obj_type, $lookup_feed_id, $lookup_type, $woo_id ) {
-
-		if ( 'publish' == get_post_status( $lookup_feed_id ) ) { // @codingStandardsIgnoreLine
-
-			switch ( $woo_obj_type ) {
-				default:
-					$status_obj = 'shop_order';
-					break;
-			}
-
-			$zoho_association_id = get_post_meta( $woo_id, 'mwb_zoho_feed_' . $lookup_feed_id . '_association', true );
-
-			if ( empty( $zoho_association_id ) ) {
-
-				$request = $this->get_request( $status_obj, $lookup_feed_id, $woo_id );
-
-				$record_type = $this->get_feed_meta( $lookup_feed_id, 'crm_object' );
-
-				$log_data = array(
-					'woo_id'     => $woo_id,
-					'feed_id'    => $lookup_feed_id,
-					'woo_object' => $status_obj,
-				);
-
-				$zoho_api = Zgf_Api::get_instance();
-				$result   = $zoho_api->create_single_record( $record_type, $request, false, $log_data );
-
-				$zoho_association_id = get_post_meta( $woo_id, 'mwb_zoho_feed_' . $lookup_feed_id . '_association', true );
-			}
-		}
-		return ! empty( $zoho_association_id ) ? $zoho_association_id : '';
-	}
 
 	/**
 	 * Returns the feed data we require.
@@ -206,17 +164,9 @@ class Mwb_Zgf_Connect_Framework {
 				case 'standard_field':
 					$field_format = ! empty( $mapping['field_value'] ) ? $mapping['field_value'] : '';
 
-					// If lookup field.
-					if ( 0 === strpos( $field_format, 'feeds_' ) ) {
-						$lookup_feed_id = str_replace( 'feeds_', '', $field_format );
-
-						$field_value = $this->resolve_lookup( $obj_type, $lookup_feed_id, $k, $obj_id );
-					} else { // Just a standard meta key.
-						$obj_required = strtok( $field_format, '_' );
-						$meta_key     = substr( $field_format, 20 );
-
-						$field_value = $this->get_prop_value( $meta_key, $entries );
-					}
+					// Just a standard meta key.
+					$meta_key    = substr( $field_format, 20 );
+					$field_value = $this->get_prop_value( $meta_key, $entries );
 
 					break;
 
@@ -243,7 +193,10 @@ class Mwb_Zgf_Connect_Framework {
 			}
 
 			$response[ $k ] = ! empty( $field_value ) ? $field_value : '';
+
 		}
+
+		$response = apply_filters( 'mwb_zgf_mapping_response', $response, $feed_id, $obj_type );
 
 		return $response;
 	}

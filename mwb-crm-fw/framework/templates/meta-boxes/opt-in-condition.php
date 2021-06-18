@@ -7,15 +7,14 @@
  * @link       https://makewebbetter.com
  * @since      1.0.0
  *
- * @package    MWB_GF_Integration_with_ZOHO_CRM
- * @subpackage MWB_GF_Integration_with_ZOHO_CRM/includes/framework/templates/
+ * @package    MWB_GF_Integration_with_Zoho_CRM
+ * @subpackage MWB_GF_Integration_with_Zoho_CRM/includes/framework/templates/
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-// echo '<pre>';echo '2'; print_r( $params ); echo '</pre>';
 global $post;
 $form_id = get_post_meta( $post->ID, 'mwb_zgf_form', true );
 ?>
@@ -54,7 +53,7 @@ $form_id = get_post_meta( $post->ID, 'mwb_zgf_form', true );
 							</div>
 						<?php endforeach; ?>
 					<?php endif; ?>
-					<button data-next-or-index="<?php echo esc_html( ++$prefilled_indexes ); ?>" class="button condition-or-btn"><?php esc_html_e( 'Add "OR" filter', 'zoho-gf-integration' ); ?></button>
+					<button data-next-or-index="<?php echo esc_html( ++$prefilled_indexes ); ?>" class="mwb-btn condition-or-btn"><?php esc_html_e( 'Add "OR" filter', 'zoho-gf-integration' ); ?></button>
 				</div>
 			</div>
 		</div>

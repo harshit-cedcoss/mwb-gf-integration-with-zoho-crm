@@ -1,0 +1,46 @@
+/*==========================================================
+=            Typography Variable and Declaration            =
+============================================================*/
+
+@font-face {
+    font-family: 'NunitoSans-ExtraBold';
+    src: url('../fonts/nunito-sans/NunitoSans-ExtraBold.ttf');
+    font-style: bold;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'NunitoSans-Bold';
+    src: url('../fonts/nunito-sans/NunitoSans-Bold.ttf');
+    font-style: bold;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'NunitoSans-Regular';
+    src: url('../fonts/nunito-sans/NunitoSans-Regular.ttf');
+    font-style: normal;
+    font-display: swap;
+}
+
+
+/*----------  Font Family Variable  ----------*/
+
+$ff-nunitosans-extrabold: 'NunitoSans-ExtraBold';
+$ff-nunitosans-bold:      'NunitoSans-Bold';
+$ff-nunitosans-regular:   'NunitoSans-Regular';
+
+/*----------  Font Size Variable  ----------*/
+
+$fs-xx-large:64px;
+$fs-x-large:44px;
+$fs-large:36px;
+$fs-xx-medium:24px;
+$fs-x-medium:22px;
+$fs-medium:20px;
+$fs-x-normal:18px;
+$fs-normal:16px;
+$fs-x-small:15px;
+$fs-small:14px;
+
+/*=====  End of Typography Variable and Declaration  ======*/

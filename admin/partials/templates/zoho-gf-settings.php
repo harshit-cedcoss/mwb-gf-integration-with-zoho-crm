@@ -7,8 +7,8 @@
  * @link       https://makewebbetter.com
  * @since      1.0.0
  *
- * @package    MWB_GF_Integration_with_ZOHO_CRM
- * @subpackage MWB_GF_Integration_with_ZOHO_CRM/admin/partials/templates
+ * @package    MWB_GF_Integration_with_Zoho_CRM
+ * @subpackage MWB_GF_Integration_with_Zoho_CRM/admin/partials/templates
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -25,17 +25,16 @@ if ( isset( $_POST['mwb_zgf_submit_setting'] ) ) {
 }
 
 $option = get_option( 'mwb_zgf_setting', Zoho_Gf_Helper::mwb_zgf_default_settings() );
-	// echo '<pre>'; print_r( $option ); echo '</pre>';
 ?>
 
 <div class="mwb_zgf__account-wrap">
 
-	<div class="mwb_zgf__logo-wrap">
-		<div class="mwb_zgf__logo-zoho">
+	<div class="mwb-zgf__logo-wrap">
+		<div class="mwb-zgf__logo-zoho">
 			<img src="<?php echo esc_url( ZOHO_GF_INTEGRATION_URL . 'admin/images/zoho-logo.png' ); ?>" alt="<?php esc_html_e( 'Zoho', 'mwb-gf-integration-with-zoho-crm' ); ?>">
 		</div>
-		<div class="mwb_zgf__logo-gravity">
-			<img src="<?php echo esc_url( ZOHO_GF_INTEGRATION_URL . 'admin/images/gravity-form.svg' ); ?>" alt="<?php esc_html_e( 'Gravity Form', 'mwb-gf-integration-with-zoho-crm' ); ?>">
+		<div class="mwb-zgf__logo-gravity">
+			<img src="<?php echo esc_url( ZOHO_GF_INTEGRATION_URL . 'admin/images/gravity-form.png' ); ?>" alt="<?php esc_html_e( 'Gravity Form', 'mwb-gf-integration-with-zoho-crm' ); ?>">
 		</div>
 	</div>
 
@@ -58,8 +57,11 @@ $option = get_option( 'mwb_zgf_setting', Zoho_Gf_Helper::mwb_zgf_default_setting
 
 	<form method="post" id="mwb_zgf_settings_form">
 		<?php wp_nonce_field( 'mwb_zoho_gf_setting', 'zoho_gf_setting_nonce' ); ?>
+		<?php
+			// echo '<pre>'; echo 'data'; print_r( $option ); echo '</pre>';
+		?>
 		<div class="mwb_zgf_table_wrapper">
-			<table class="mwb_zgf_table">
+			<table class="mwb_zgf_table mwb-zgf__setting--table">
 				<tbody>
 
 					<!-- Enable logs start -->
@@ -73,9 +75,11 @@ $option = get_option( 'mwb_zgf_setting', Zoho_Gf_Helper::mwb_zgf_default_setting
 							$desc = esc_html__( 'Enable logging of all the forms data sent over zoho', 'mwb-gf-integration-with-zoho-crm' );
 							echo esc_html( Zoho_Gf_Integration_Admin::mwb_zgf_tooltip( $desc ) );
 
-							$enable_logs = ! empty( $option['enable_logs'] ) ? sanitize_text_field( wp_unslash( $option['enable_logs'] ) ) : 'no';
+							$enable_logs = ! empty( $option['enable_logs'] ) ? sanitize_text_field( wp_unslash( $option['enable_logs'] ) ) : 'off';
 							?>
-							<input type="checkbox" name="mwb_setting[enable_logs]" value="yes" <?php checked( 'yes', $enable_logs ); ?>>
+							<div class="mwb-switch">
+								<input type="checkbox" class="mwb-switch__checkbox" name="mwb_setting[enable_logs]" value="on" <?php checked( 'on', $enable_logs ); ?>>
+							</div>
 						</td>
 					</tr>
 					<!-- Enable logs end-->
@@ -91,9 +95,11 @@ $option = get_option( 'mwb_zgf_setting', Zoho_Gf_Helper::mwb_zgf_default_setting
 							$desc = esc_html__( 'Enable plugin data delete at uninstall', 'mwb-gf-integration-with-zoho-crm' );
 							echo esc_html( Zoho_Gf_Integration_Admin::mwb_zgf_tooltip( $desc ) );
 
-							$data_delete = ! empty( $option['data_delete'] ) ? sanitize_text_field( wp_unslash( $option['data_delete'] ) ) : 'no';
+							$data_delete = ! empty( $option['data_delete'] ) ? sanitize_text_field( wp_unslash( $option['data_delete'] ) ) : 'off';
 							?>
-							<input type="checkbox" name="mwb_setting[data_delete]" value="yes"  <?php checked( 'yes', $data_delete ); ?>>
+							<div class="mwb-switch">
+								<input type="checkbox" class="mwb-switch__checkbox" name="mwb_setting[data_delete]" value="on"  <?php checked( 'on', $data_delete ); ?>>
+							</div>
 						</td>
 					</tr>
 					<!-- data delete end -->
@@ -109,9 +115,11 @@ $option = get_option( 'mwb_zgf_setting', Zoho_Gf_Helper::mwb_zgf_default_setting
 								$desc = esc_html__( 'Enable email notification on errors', 'mwb-gf-integration-with-zoho-crm' );
 								echo esc_html( Zoho_Gf_Integration_Admin::mwb_zgf_tooltip( $desc ) );
 
-								$enable_notif = ! empty( $option['enable_notif'] ) ? sanitize_text_field( wp_unslash( $option['enable_notif'] ) ) : 'no';
+								$enable_notif = ! empty( $option['enable_notif'] ) ? sanitize_text_field( wp_unslash( $option['enable_notif'] ) ) : 'off';
 							?>
-							<input type="checkbox" name="mwb_setting[enable_notif]" value="yes" <?php checked( 'yes', $enable_notif ); ?> >
+							<div class="mwb-switch">
+								<input type="checkbox" class="mwb-switch__checkbox" name="mwb_setting[enable_notif]" value="on" <?php checked( 'on', $enable_notif ); ?> >
+							</div>
 						</td>
 					</tr>
 					<!-- Enable email notif end -->

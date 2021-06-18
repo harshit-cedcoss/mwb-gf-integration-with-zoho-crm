@@ -6,8 +6,8 @@
  * @link       https://makewebbetter.com
  * @since      1.0.0
  *
- * @package    Zoho_Gf_Integration
- * @subpackage Zoho_Gf_Integration/public
+ * @package    MWB_GF_Integration_with_Zoho_CRM
+ * @subpackage MWB_GF_Integration_with_Zoho_CRM/public
  */
 
 /**
@@ -16,8 +16,8 @@
  * Defines the plugin name, version, and two examples hooks for how to
  * enqueue the public-facing stylesheet and JavaScript.
  *
- * @package    Zoho_Gf_Integration
- * @subpackage Zoho_Gf_Integration/public
+ * @package    MWB_GF_Integration_with_Zoho_CRM
+ * @subpackage MWB_GF_Integration_with_Zoho_CRM/public
  * @author     MakeWebBetter <https://makewebbetter.com>
  */
 class Zoho_Gf_Integration_Public {
@@ -129,6 +129,10 @@ class Zoho_Gf_Integration_Public {
 
 		$field_values = array();
 
+		$entry = apply_filters( 'mwb_zgf_modify_entry_filter', $entry );
+
+		do_action( 'mwb_zgf_use_entry_data', $entry, $form );
+
 		foreach ( $form['fields'] as $field_obj ) {
 			if ( ! empty( $field_obj->inputs ) && is_array( $field_obj->inputs ) && 'time' != $field_obj->type ) {   // @codingStandardsIgnoreLine
 				foreach ( $field_obj->inputs as $field_options ) {
@@ -150,7 +154,7 @@ class Zoho_Gf_Integration_Public {
 
 		$this->form_fields = $form['fields'];
 
-		$this->send_to_crm( $form_data );
+		$this->send_to_crm( $form_data, $entry );
 
 	}
 
@@ -159,9 +163,11 @@ class Zoho_Gf_Integration_Public {
 	 * Send form data over crm(ZOHO).
 	 *
 	 * @param array $data An array of form data and entries.
+	 * @param array $entry Array of entry submission.
+	 *
 	 * @since 1.0.0
 	 */
-	public function send_to_crm( $data = array() ) {
+	public function send_to_crm( $data = array(), $entry ) {
 
 		if ( empty( $data ) || ! is_array( $data ) ) {
 			return;
@@ -180,6 +186,8 @@ class Zoho_Gf_Integration_Public {
 					'feed_name'   => get_the_title( $feed_id ),
 					'zoho_object' => $crm_object,
 				);
+
+				do_action( 'mwb_zgf_before_send_data_to_crm', $feed_id, $entry, $log_data, $data, $api );
 
 				if ( ! empty( $filter_exist ) ) {
 
@@ -207,6 +215,8 @@ class Zoho_Gf_Integration_Public {
 						$this->check_error_for_mail( $result, $data );
 					}
 				}
+
+				do_action( 'mwb_zgf_after_send_data_to_crm', $feed_id, $entry, $request, $result, $log_data, $data );
 			}
 		}
 	}
@@ -273,7 +283,7 @@ class Zoho_Gf_Integration_Public {
 			}
 		}
 
-		$discard_fields = array( 'fileupload', 'list' );
+		$discard_fields = array( 'list' );
 
 		$discard_fields = apply_filters( 'mwb_zgf_discard_fields_to_zoho', $discard_fields, $field, $entries );
 

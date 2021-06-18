@@ -22,7 +22,7 @@
  * @link       https://makewebbetter.com
  * @since      1.0.0
  *
- * @package    MWB_GF_Integration_with_ZOHO_CRM
+ * @package    MWB_GF_Integration_with_Zoho_CRM
  */
 
 // If uninstall not called from WordPress, then exit.

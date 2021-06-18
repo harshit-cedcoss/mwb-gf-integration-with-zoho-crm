@@ -1,0 +1,95 @@
+%cta {
+    background-color: $c-tufts-blue;
+    border-radius: 32px;
+    border: none;
+    color: $c-white;
+    cursor: pointer;
+    display: inline-block;
+    font-family: $ff-nunitosans-extrabold;
+    font-size: $fs-small;
+    font-weight: bold;
+    line-height: 21px;
+    min-height: 48px;
+    margin: 10px 0;
+    min-width: 150px;
+    padding: 14px 16px;
+    transition: all 0.3s linear;
+    text-align: center;
+
+    &:hover {
+        background: $c-black;
+        color: $c-white;
+    }
+
+}
+
+%mwb-zcf7__icon-wrap {
+    background: #2196f3;
+    border-radius: 50%;
+    cursor: pointer;
+    height: 25px;
+    position: absolute;
+    right: 5px;
+    top: 10px;
+    transition: all 0.3s linear;
+    width: 25px;
+}
+
+%mwb-zcf7__icon-insert {
+    width: 15px;
+    height: 4px;
+    background: #ffffff;
+    display: inline-block;
+    margin: 0px 0 3px 5px;
+    border-radius: 4px;
+}
+
+%mwb-zcf7__icon-remove {
+    background: #ffffff;
+    border-radius: 4px;
+    display: inline-block;
+    height: 4px;
+    left: 5px;
+    position: absolute;
+    top: 10px;
+    transform: rotate(90deg);
+    width: 15px;
+    z-index: 99;
+}
+
+%icon-rotation {
+    transform: rotate(45deg);
+}
+
+%secondary-button {
+    border-radius: 4px;
+    border: 1px solid $c-tufts-blue;
+    background-color: $c-tufts-blue;
+    color: $c-white;
+    font-weight: bold;
+    font-size: 14px;
+    display: inline-block;
+    max-width: 150px;
+    padding: 8px 25px;
+    text-align: center;
+    text-transform: capitalize;
+    transition: all 0.3s linear;
+    width: 100%;
+}
+
+%title {
+    font-size: $fs-x-medium;
+    font-family: $ff-nunitosans-bold;
+    color: $c-dark;
+    line-height: 34px;
+    font-weight: 700;
+    letter-spacing: 0.3px;    
+} 
+
+%mwb-row {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+}
+

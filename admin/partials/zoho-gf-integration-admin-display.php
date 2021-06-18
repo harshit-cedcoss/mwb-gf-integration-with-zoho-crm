@@ -7,8 +7,8 @@
  * @link       https://makewebbetter.com
  * @since      1.0.0
  *
- * @package    Zoho_Gf_Integration
- * @subpackage Zoho_Gf_Integration/admin/partials
+ * @package    MWB_GF_Integration_with_Zoho_CRM
+ * @subpackage MWB_GF_Integration_with_Zoho_CRM/admin/partials
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
